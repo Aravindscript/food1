@@ -148,53 +148,18 @@ export default function App() {
     <>
       {/* INTRO SCREEN — 5 SECONDS */}
 
-      <div className={`intro-screen ${intro ? "" : "intro-exit"}`}>
-        <video
-          className="intro-video"
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1400&q=85"
-        >
-          <source src="/videos/intro.mp4" type="video/mp4" />
-        </video>
-
-        <div className="intro-shade" />
-
-        <div className="intro-content">
-          <div className="brand-symbol intro-symbol">
-            <Utensils size={25} />
-          </div>
-
-          <p className="eyebrow intro-eyebrow">
-            YOUR NEXT FAVOURITE MEAL
-          </p>
-
-          <h1 className="intro-logo">
-            CRAVIO<span>.</span>
-          </h1>
-
-          <p className="intro-description">
-            Good food. Good mood. Delivered.
-          </p>
-
-          <div className="loading-track">
-            <div className="loading-progress" />
-          </div>
-
-          <span className="loading-caption">
-            PREPARING SOMETHING DELICIOUS
-          </span>
-
-          <button
-            className="skip-intro"
-            onClick={() => setIntro(false)}
-          >
-            Skip intro <ArrowRight size={15} />
-          </button>
-        </div>
-      </div>
+     <video
+  className="intro-video"
+  autoPlay
+  muted
+  loop
+  playsInline
+>
+  <source
+    src={`${import.meta.env.BASE_URL}videos/intro.mp4`}
+    type="video/mp4"
+  />
+</video>
 
       {/* MAIN WEBSITE */}
 
@@ -461,16 +426,18 @@ export default function App() {
           {/* FEATURE VIDEO */}
 
           <section className="feature-section" id="about">
-            <video
-              className="feature-video"
-              autoPlay
-              muted
-              loop
-              playsInline
-              poster="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1400&q=85"
-            >
-              <source src="/videos/hero.mp4" type="video/mp4" />
-            </video>
+  <video
+    className="feature-video"
+    autoPlay
+    muted
+    loop
+    playsInline
+  >
+    <source
+      src={'${import.meta.env.BASE_URL}videos/hero.mp4'}
+      type="video/mp4"
+    />
+  </video>
 
             <div className="feature-overlay" />
 
