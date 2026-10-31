@@ -473,7 +473,7 @@ export default function App() {
               poster="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1400&q=85"
             >  
            <source
-<source
+
   src={`${import.meta.env.BASE_URL}videos/hero.mp4`}
   type="video/mp4"
 />
