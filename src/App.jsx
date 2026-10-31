@@ -157,7 +157,10 @@ export default function App() {
           playsInline
           poster="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1400&q=85"
         >
-          <source src={'${import.meta.env.BASE_URL}videos/intro.mp4'} type="video/mp4" />
+         <source
+  src={`${import.meta.env.BASE_URL}videos/intro.mp4`}
+  type="video/mp4"
+/>
         </video>
 
         <div className="intro-shade" />
@@ -468,8 +471,12 @@ export default function App() {
               loop
               playsInline
               poster="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1400&q=85"
-            >
-              <source src={'${import.meta.env.BASE_URL}videos/intro.mp4'} type="video/mp4" />
+            >  
+           <source
+<source
+  src={`${import.meta.env.BASE_URL}videos/hero.mp4`}
+  type="video/mp4"
+/>
             </video>
 
             <div className="feature-overlay" />
