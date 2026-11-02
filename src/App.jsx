@@ -65,6 +65,46 @@ const foods = [
       "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=700&q=85",
     tag: "FRESH PICK",
   },
+  {
+  name: "Spicy Chicken Wings",
+  category: "ASIAN",
+  price: "₹289",
+  rating: "4.9",
+  time: "20–25 min",
+  image:
+    "https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=700&q=85",
+  tag: "HOT FAVOURITE",
+},
+{
+  name: "Chocolate Lava Cake",
+  category: "DESSERTS",
+  price: "₹179",
+  rating: "4.9",
+  time: "15–20 min",
+  image:
+    "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=700&q=85",
+  tag: "SWEET PICK",
+},
+{
+  name: "Crispy Chicken Wrap",
+  category: "BURGERS",
+  price: "₹199",
+  rating: "4.8",
+  time: "15–20 min",
+  image:
+    "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=700&q=85",
+  tag: "MUST TRY",
+},
+{
+  name: "Fresh Strawberry Shake",
+  category: "DRINKS",
+  price: "₹149",
+  rating: "4.7",
+  time: "10–15 min",
+  image:
+    "https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=700&q=85",
+  tag: "FRESH PICK",
+},
 ];
 
 const APP_URL = "https://example.com/cravio";
@@ -109,11 +149,16 @@ export default function App() {
   const [cart, setCart] = useState([]);
   const [toast, setToast] = useState("");
   const [videoPlaying, setVideoPlaying] = useState(false);
+  const [showOfferPopup, setShowOfferPopup] = useState(false);
 
-  useEffect(() => {
-    const timer = setTimeout(() => setIntro(false), 5000);
-    return () => clearTimeout(timer);
-  }, []);
+ useEffect(() => {
+  const timer = setTimeout(() => {
+    setIntro(false);
+    setShowOfferPopup(true);
+  }, 5000);
+
+  return () => clearTimeout(timer);
+}, []);
 
   useEffect(() => {
     document.body.style.overflow = intro ? "hidden" : "";
@@ -191,11 +236,14 @@ export default function App() {
           </span>
 
           <button
-            className="skip-intro"
-            onClick={() => setIntro(false)}
-          >
-            Skip intro <ArrowRight size={15} />
-          </button>
+  className="skip-intro"
+  onClick={() => {
+    setIntro(false);
+    setShowOfferPopup(true);
+  }}
+>
+  Skip intro <ArrowRight size={15} />
+</button>
         </div>
       </div>
 
@@ -433,14 +481,14 @@ export default function App() {
                   className="category-card"
                   key={category.name}
                   onClick={() => {
-                    const mapping = {
-                      Burgers: "BURGERS",
-                      Pizza: "PIZZA",
-                      Asian: "ALL",
-                      Desserts: "ALL",
-                      Healthy: "HEALTHY",
-                      Drinks: "ALL",
-                    };
+                   const mapping = {
+  Burgers: "BURGERS",
+  Pizza: "PIZZA",
+  Asian: "ASIAN",
+  Desserts: "DESSERTS",
+  Healthy: "HEALTHY",
+  Drinks: "DRINKS",
+};
 
                     setSelectedCategory(mapping[category.name]);
                     scrollTo("menu");
@@ -542,7 +590,16 @@ export default function App() {
             </div>
 
             <div className="filter-list">
-              {["ALL", "BURGERS", "PIZZA", "ITALIAN", "HEALTHY"].map(
+            {[
+  "ALL",
+  "BURGERS",
+  "PIZZA",
+  "ITALIAN",
+  "HEALTHY",
+  "ASIAN",
+  "DESSERTS",
+  "DRINKS",
+].map(
                 (category) => (
                   <button
                     key={category}
@@ -898,6 +955,101 @@ export default function App() {
             Terms and conditions placeholder
           </div>
         </footer>
+        {/* CRAVIO SPECIAL OFFER POPUP */}
+
+{showOfferPopup && (
+  <div
+    className="offer-popup-backdrop"
+    
+  >
+    <div
+      className="offer-popup"
+      onClick={(event) => event.stopPropagation()}
+    >
+      <button
+        className="offer-close"
+        onClick={() => setShowOfferPopup(false)}
+        aria-label="Close offer"
+      >
+        <X size={21} />
+      </button>
+
+      <div className="offer-popup-left">
+
+        <span className="offer-mini-label">
+          <Zap size={14} />
+          EXCLUSIVE CRAVIO OFFER
+        </span>
+
+        <h2>
+          GOOD FOOD.
+          <br />
+          <span>MORE SAVINGS.</span>
+        </h2>
+
+        <div className="offer-discount">
+          <strong>20%</strong>
+          <span>OFF</span>
+        </div>
+
+        <p className="offer-condition">
+          Order 3 or more food items and
+          enjoy an exclusive 20% discount.
+        </p>
+
+        <p className="offer-app-text">
+          Download the CRAVIO app now
+          and order your favourites!
+        </p>
+
+        <button
+          className="offer-order-button"
+          onClick={() => {
+            setShowOfferPopup(false);
+            scrollTo("menu");
+          }}
+        >
+          Explore delicious food
+          <ArrowRight size={17} />
+        </button>
+
+      </div>
+
+      <div className="offer-popup-right">
+
+        <div className="offer-qr-glow" />
+
+        <div className="offer-qr-box">
+
+          <div className="offer-qr-title">
+            <Smartphone size={19} />
+            <strong>SCAN TO DOWNLOAD</strong>
+          </div>
+
+          <QRCodeSVG
+            value={APP_URL}
+            size={125}
+            level="H"
+            includeMargin
+            bgColor="#ffffff"
+            fgColor="#171717"
+          />
+
+          <strong className="offer-scan-text">
+            SCAN. DOWNLOAD. ORDER.
+          </strong>
+
+          <span>
+            Your next favourite meal awaits.
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+)}
       </div>
 
       {/* TOAST MESSAGE */}
@@ -909,5 +1061,8 @@ export default function App() {
         </div>
       )}
     </>
+    
   );
+
+  
 }
