@@ -3774,3 +3774,378 @@ input {
   background: rgba(0, 0, 0, 0.78);
   backdrop-filter: blur(10px);
 }
+
+
+/* =========================================
+   CRAVIO - FINAL RESPONSIVE FIX
+   MOBILE NAVBAR + OFFER POPUP
+========================================= */
+
+/* MOBILE NAVBAR: 320px - 480px */
+
+@media (max-width: 480px) {
+
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    min-height: 66px;
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .brand {
+    flex-shrink: 0;
+  }
+
+  .brand-name {
+    font-size: 23px;
+  }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+
+  .cart-button {
+    padding: 9px 10px;
+    white-space: nowrap;
+  }
+
+  /* Hide desktop links */
+
+  .navbar .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+
+    width: 100%;
+    padding: 8px 6% 16px;
+
+    background: #fffaf4;
+    border-bottom: 1px solid #eae4dc;
+    box-shadow: 0 15px 25px #00000012;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transform: translateY(-10px);
+    transition: 0.25s ease;
+
+    z-index: 1001;
+  }
+
+  /* Show links when hamburger is clicked */
+
+  .navbar .nav-links.nav-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .navbar .nav-links a {
+    display: block;
+    padding: 14px 0;
+    font-size: 13px;
+    border-bottom: 1px solid #eae4dc;
+  }
+
+  /* Show hamburger */
+
+  .navbar .mobile-toggle {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+    border: none;
+    background: transparent;
+    color: var(--ink);
+  }
+
+  /* =================================
+     MOBILE OFFER POPUP
+  ================================= */
+
+  .offer-popup-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 20000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 12px;
+
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .offer-popup {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) !important;
+
+    width: 100%;
+    max-width: 420px;
+    min-width: 0;
+    min-height: 0;
+
+    max-height: calc(100dvh - 24px);
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    border-radius: 19px;
+  }
+
+  .offer-popup-left {
+    width: 100%;
+    min-width: 0;
+
+    padding: 48px 24px 24px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .offer-mini-label {
+    font-size: 9px;
+  }
+
+  .offer-popup-left h2 {
+    font-size: clamp(24px, 7vw, 30px);
+    line-height: 1.15;
+    margin-top: 17px;
+  }
+
+  .offer-discount {
+    gap: 6px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+  }
+
+  .offer-discount strong {
+    font-size: clamp(55px, 15vw, 68px);
+    letter-spacing: -3px;
+    line-height: 1;
+  }
+
+  .offer-discount span {
+    font-size: 19px;
+  }
+
+  .offer-condition {
+    max-width: 100%;
+    font-size: 11px;
+    line-height: 1.8;
+    margin-top: 10px;
+  }
+
+  .offer-app-text {
+    font-size: 10px;
+  }
+
+  .offer-order-button {
+    margin-top: 15px;
+    padding: 12px 15px;
+  }
+
+  /* QR SECTION */
+
+  .offer-popup-right {
+    width: 100%;
+    min-width: 0;
+    min-height: 250px;
+
+    display: grid;
+    place-items: center;
+
+    padding: 25px 15px;
+  }
+
+  .offer-qr-box {
+    width: min(205px, 100%);
+    max-width: 100%;
+    padding: 18px 14px;
+    gap: 12px;
+  }
+
+  .offer-qr-box svg {
+    width: 105px;
+    height: 105px;
+    max-width: 100%;
+  }
+
+  .offer-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+
+    width: 37px;
+    height: 37px;
+  }
+
+}
+
+/* =========================================
+   EXTRA SMALL PHONES: 320px - 360px
+========================================= */
+
+@media (max-width: 360px) {
+
+  .navbar {
+    padding-inline: 4%;
+    gap: 5px;
+  }
+
+  .brand-name {
+    font-size: 21px;
+  }
+
+  .brand-symbol {
+    width: 33px;
+    height: 33px;
+  }
+
+  .nav-actions {
+    gap: 7px;
+  }
+
+  .cart-button {
+    padding: 8px;
+  }
+
+  .offer-popup-left {
+    padding: 48px 18px 20px;
+  }
+
+  .offer-popup-left h2 {
+    font-size: 23px;
+  }
+
+  .offer-discount strong {
+    font-size: 54px;
+  }
+
+  .offer-popup-right {
+    min-height: 225px;
+    padding: 20px 12px;
+  }
+
+  .offer-qr-box {
+    width: 180px;
+    padding: 14px 10px;
+  }
+
+  .offer-qr-box svg {
+    width: 95px;
+    height: 95px;
+  }
+
+}
+
+/* =========================================
+   TABLET: 481px - 768px
+========================================= */
+
+@media (min-width: 481px) and (max-width: 768px) {
+
+  .navbar .nav-links {
+    top: 100%;
+  }
+
+  .offer-popup {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    width: 100%;
+    max-width: 650px;
+    min-height: 380px;
+    max-height: calc(100dvh - 40px);
+  }
+
+  .offer-popup-left {
+    padding: 35px 22px;
+    min-width: 0;
+  }
+
+  .offer-popup-right {
+    padding: 25px 12px;
+    min-width: 0;
+  }
+
+  .offer-discount strong {
+    font-size: clamp(55px, 8vw, 65px);
+  }
+
+  .offer-qr-box {
+    width: min(175px, 100%);
+    padding: 17px 10px;
+  }
+
+}
+
+/* =========================================
+   LAPTOP NAVBAR STABILITY
+========================================= */
+
+@media (min-width: 769px) and (max-width: 1100px) {
+
+  .navbar {
+    padding-inline: 3%;
+    gap: 10px;
+  }
+
+  .nav-links {
+    gap: 12px;
+  }
+
+  .nav-links a {
+    font-size: 10px;
+  }
+
+  .cart-button {
+    padding: 10px;
+    font-size: 10px;
+  }
+
+}
+
+/* =========================================
+   PREVENT POPUP CONTENT OVERFLOW
+========================================= */
+
+.offer-popup,
+.offer-popup-left,
+.offer-popup-right,
+.offer-qr-box {
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+.offer-popup img,
+.offer-popup svg {
+  max-width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .offer-popup,
+  .offer-popup-backdrop {
+    animation: none;
+  }
+}
